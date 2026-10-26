@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cuestionario de Peter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=Silkscreen&display=swap">
+<style>/* Taltalab · lenguaje de la Propuesta Studio Roses. Una idea: hablar, no escribir. Portada en tinta, guía en papel, una pregunta por pantalla. */
+:root{--oliva:#383629;--tinta:#171713;--papel:#F7F3ED;--mute:#706A61;--line:#DDD4C8;--p60:rgba(247,243,237,.66);--p25:rgba(247,243,237,.25);
+--ff:"Inter Tight",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;--pix:"Silkscreen",ui-monospace,monospace;--ease:cubic-bezier(.23,1,.32,1);color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:inherit}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--papel);color:var(--tinta);font-family:var(--ff);font-size:18px;line-height:1.45;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+button,textarea{font:inherit;color:inherit;letter-spacing:inherit}
+button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wrap{max-width:880px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--mute)}
+h1{font-size:clamp(44px,9vw,92px);line-height:.92;letter-spacing:-.06em;font-weight:500;text-wrap:balance}
+h2{font-size:clamp(28px,4.6vw,46px);line-height:1;letter-spacing:-.05em;font-weight:500;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:1px solid currentColor;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:transform .16s var(--ease),background .2s,color .2s;text-decoration:none}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.btn.inv{background:var(--papel);color:var(--tinta);border-color:var(--papel)}
+.btn:disabled{opacity:.3;cursor:default}
+/* portada */
+.top{background:var(--tinta);color:var(--papel);position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:max(18px,env(safe-area-inset-top,0px));padding-bottom:18px;border-bottom:1px solid var(--p25)}
+.hd img{height:16px;width:auto;display:block}
+.chip{border:1px solid currentColor;border-radius:20px;padding:5px 12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.cover{flex:1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(40px,8vh,80px)}
+.cover .tag{color:var(--p60);margin-bottom:22px;display:block}
+.cover h1 span{color:rgba(247,243,237,.5)}
+.cover p{color:var(--p60);font-size:clamp(19px,2.2vw,23px);line-height:1.3;margin-top:24px;max-width:24em}
+.cover .btn{margin-top:32px}
+.facts{display:flex;gap:28px;margin-top:28px;color:var(--p60);font-size:15px}
+.facts b{display:block;color:var(--papel);font-size:34px;font-weight:500;letter-spacing:-.05em;line-height:1}
+.mic-hero{position:relative;width:min(340px,70vw);aspect-ratio:1;margin-inline:auto;display:grid;place-items:center}
+.mic-hero i{position:absolute;inset:0;border-radius:50%;border:1px solid var(--p25);animation:ring 3.6s var(--ease) infinite}
+.mic-hero i:nth-child(2){animation-delay:1.2s}.mic-hero i:nth-child(3){animation-delay:2.4s}
+@keyframes ring{0%{transform:scale(.45);opacity:1}100%{transform:scale(1);opacity:0}}
+.mic-hero span{width:44%;aspect-ratio:1;border-radius:50%;background:var(--papel);display:grid;place-items:center}
+.mic-hero svg{width:42%;stroke:var(--tinta);fill:none;stroke-width:1.6}
+@media(max-width:760px){.cover{grid-template-columns:1fr}.mic-hero{width:min(220px,56vw);order:-1;margin:0}}
+/* cómo responder */
+.how{padding-block:clamp(56px,9vw,104px)}
+.how h2{margin-top:14px;max-width:16em}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px);margin-top:clamp(28px,4vw,44px)}
+.way{border:1px solid var(--tinta);padding:20px;display:grid;gap:12px;align-content:start;background:var(--papel)}
+.way.f{background:var(--tinta);color:var(--papel)}
+.way .n{font-family:var(--pix);font-size:11px;opacity:.6}
+.way svg{width:100%;height:auto;max-height:120px}
+.way b{font-weight:500;font-size:21px;letter-spacing:-.03em;line-height:1.1}
+.way p{font-size:15.5px;opacity:.72;line-height:1.35}
+.way em{font-style:normal;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;border-radius:20px;padding:3px 10px;justify-self:start}
+@media(max-width:760px){.ways{grid-template-columns:1fr}.way svg{max-height:76px;width:auto;justify-self:start}}
+.why{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:clamp(20px,3vw,32px);background:var(--oliva);color:var(--papel)}
+.why div{padding:20px 22px}.why div+div{border-left:1px solid var(--p25)}
+.why .tag{color:var(--p60)}
+.why b{display:block;font-weight:500;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.03em;line-height:1.15;margin-top:8px}
+@media(max-width:760px){.why{grid-template-columns:1fr}.why div+div{border-left:0;border-top:1px solid var(--p25)}}
+/* preguntas */
+.qs{background:var(--papel);padding-block:clamp(32px,6vw,72px) 96px;border-top:1px solid var(--tinta);scroll-margin-top:0}
+.segs{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:4px}
+.segs button{height:28px;position:relative}
+.segs button:after{content:"";position:absolute;left:0;right:0;top:12px;height:4px;background:var(--line);transition:background .3s var(--ease)}
+.segs button.ok:after{background:var(--mute)}
+.segs button.cur:after{background:var(--tinta)}
+.qhead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:22px}
+.qnum{font-size:clamp(56px,10vw,104px);font-weight:500;letter-spacing:-.06em;line-height:.85;font-variant-numeric:tabular-nums}
+.qnum small{font-size:.32em;color:var(--mute);letter-spacing:-.02em;margin-left:.2em}
+.save{font-size:14px;color:var(--mute);display:flex;align-items:center;gap:8px}
+.save i{width:8px;height:8px;border-radius:50%;background:var(--mute)}
+.card{margin-top:18px}
+.card.in{animation:rise .45s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.card .tag{display:block;margin-bottom:12px}
+.card h2{max-width:18em}
+.card .hint{color:var(--mute);margin-top:12px;font-size:17px;max-width:34em}
+.ans{margin-top:24px;border:1px solid var(--tinta);background:#FBF9F5;position:relative}
+.ans textarea{display:block;width:100%;min-height:clamp(150px,26vh,240px);border:0;background:transparent;padding:18px 18px 8px;font-size:18px;line-height:1.45;resize:vertical;outline:0}
+.ans:focus-within{box-shadow:0 0 0 2px var(--tinta)}
+.abar{display:flex;align-items:center;gap:14px;padding:10px 12px 12px 18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.abar .st{flex:1;min-width:0;font-size:15px;color:var(--mute)}
+.mic{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 22px 0 8px;border-radius:999px;background:var(--tinta);color:var(--papel);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:transform .16s var(--ease)}
+.mic:active{transform:scale(.97)}
+.mic .dot{width:42px;height:42px;border-radius:50%;background:var(--papel);display:grid;place-items:center}
+.mic svg{width:20px;height:20px;stroke:var(--tinta);fill:none;stroke-width:1.8}
+.mic.rec{background:#8E2F2F}
+.mic.rec .dot{animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(.86)}}
+.wave{display:none;gap:3px;align-items:center;height:24px}
+.rec~.st .wave,.wave.on{display:inline-flex}
+.wave i{width:3px;height:100%;background:var(--tinta);transform-origin:center;animation:wv .9s ease-in-out infinite}
+.wave i:nth-child(2){animation-delay:.15s}.wave i:nth-child(3){animation-delay:.3s}.wave i:nth-child(4){animation-delay:.45s}.wave i:nth-child(5){animation-delay:.6s}
+@keyframes wv{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+.clips{border-top:1px solid var(--line);padding:0 12px 6px 18px}.clips:empty{display:none}
+.clh{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:12px}
+.clip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line);font-size:15px}.clh+.clip{border-top:0}
+.clip audio{height:36px;flex:1;min-width:180px}.clip .del{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);min-height:36px;padding:0 6px}
+.chrome{display:flex;gap:12px;align-items:flex-start;margin-top:28px;padding:14px 16px;border:1px solid rgba(247,243,237,.4);max-width:30em;font-size:16px;color:var(--p60)}
+.chrome b{color:var(--papel);font-weight:500}.chrome svg{flex:none;width:24px;height:24px;stroke:var(--papel);fill:none;stroke-width:1.4}
+.nochrome{position:sticky;top:0;z-index:50;background:#8E2F2F;color:var(--papel);padding:12px 16px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;font-size:15px;text-align:center}
+.nochrome b{font-weight:500}.nochrome button{border:1px solid var(--papel);border-radius:999px;padding:8px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;min-height:40px}
+.qnav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}
+.qnav .btn{flex:0 0 auto}
+.kb{margin-top:16px;font-size:15px;color:var(--mute);display:flex;gap:10px;align-items:flex-start}
+.kb svg{flex:none;width:22px;height:22px;stroke:var(--mute);fill:none;stroke-width:1.6;margin-top:1px}
+/* final */
+.end h2{margin-top:6px}
+.end p{color:var(--mute);margin-top:12px;max-width:34em}
+.sum{list-style:none;margin-top:24px;border-top:1px solid var(--tinta)}
+.sum li{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+.sum li span{color:var(--mute);font-variant-numeric:tabular-nums}
+.sum li em{font-style:normal;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.sum li em.y{color:var(--tinta)}
+.sum li button{text-align:left;min-height:32px}
+.send{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.msg{margin-top:12px;font-size:15px;color:var(--mute);min-height:1.3em}
+.call{margin-top:40px;border:1px dashed var(--tinta);padding:20px 22px}
+.call b{font-weight:500;font-size:20px;letter-spacing:-.03em}
+.call p{margin-top:6px;font-size:16px}
+.foot{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mute);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="top"><div class="wrap" style="width:100%;flex:1;display:flex;flex-direction:column">
+<header class="hd"><img src="../taltalab-logo-papel.png" alt="Taltalab"><span class="chip">Pauso · Peter</span></header>
+<div class="cover">
+<div>
+<span class="tag">Fase 1 · Cuestionario de flujo y roles</span>
+<h1>Peter, cuéntanoslo <span>hablando.</span></h1>
+<p>Como delineante, pasan por ti muchos de los planos y fichas de los proyectos. Queremos entender cómo te llegan los encargos y los cambios, y cómo sabes cuál es la versión buena, porque es una de las cosas que más se repiten en el Dropbox de Tonyina.</p>
+<div class="facts"><div><b>42</b>preguntas</div><div><b>8</b>bloques, a tu ritmo</div><div><b>40</b>minutos, en varios ratos</div></div>
+<div class="chrome"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="3.6"/><path d="M12 8.4h8.6M8.9 13.8 4.6 6.3M15.1 13.8l-4.3 7.6"/></svg><span><b>Ábrelo en Google Chrome</b>, en el ordenador o en el móvil. Es donde mejor funciona el micro.</span></div>
+<a class="btn inv" href="#q">Empezar</a>
+</div>
+<div class="mic-hero" aria-hidden="true"><i></i><i></i><i></i><span><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg></span></div>
+</div>
+</div></div>
+<section class="how"><div class="wrap">
+<span class="tag">Cómo responder</span>
+<h2>Habla como si nos lo contaras tomando un café.</h2>
+<div class="ways">
+<div class="way f"><span class="n">01 · La más fácil</span>
+<svg viewBox="0 0 200 120" aria-hidden="true"><rect x="40" y="10" width="120" height="100" rx="4" fill="none" stroke="#F7F3ED" stroke-width="1.5"/><rect x="52" y="24" width="96" height="40" fill="none" stroke="rgba(247,243,237,.4)"/><circle cx="100" cy="86" r="14" fill="#F7F3ED"/><rect x="96" y="78" width="8" height="12" rx="4" fill="#171713"/><path d="M60 40h60M60 50h40" stroke="rgba(247,243,237,.5)" stroke-width="2"/></svg>
+<b>Pulsa el micro y habla</b><p>Cada pregunta tiene un botón de micrófono. Tu voz se graba aquí mismo, en el ordenador o en el móvil. La primera vez, acepta el permiso del micrófono.</p><em>En esta página</em></div>
+<div class="way"><span class="n">02 · Si prefieres</span>
+<svg viewBox="0 0 200 120" aria-hidden="true"><rect x="30" y="20" width="140" height="80" fill="none" stroke="#171713" stroke-width="1.5"/><path d="M44 42h96M44 56h80M44 70h56" stroke="#DDD4C8" stroke-width="3"/><path d="M104 70h2" stroke="#171713" stroke-width="2"/><rect x="108" y="62" width="2" height="16" fill="#171713"/></svg>
+<b>También puedes escribir</b><p>Cada respuesta tiene su caja. Habla, escribe o mezcla las dos cosas: lo que te resulte más cómodo.</p><em>Sin apps externas</em></div>
+<div class="way"><span class="n">03 · A tu ritmo</span>
+<svg viewBox="0 0 200 120" aria-hidden="true"><g fill="none" stroke="#171713" stroke-width="1.5"><rect x="28" y="40" width="40" height="40"/><rect x="80" y="40" width="40" height="40"/><rect x="132" y="40" width="40" height="40" stroke-dasharray="4 4"/></g><rect x="28" y="40" width="40" height="40" fill="#171713"/><path d="M40 60l6 6 12-14" stroke="#F7F3ED" stroke-width="2.4" fill="none"/></svg>
+<b>En varios ratos</b><p>8 bloques cortos. Lo que respondes se guarda solo: puedes cerrar y seguir otro día desde el mismo dispositivo.</p><em>Se guarda solo</em></div>
+</div>
+<div class="why">
+<div><span class="tag">Por qué hablando</span><b>Hablando salen más detalles y más ejemplos reales, que es lo que más nos ayuda.</b></div>
+<div><span class="tag">Sin presión</span><b>No hay respuestas buenas ni malas. Si una pregunta no aplica o no la sabes, pasa a la siguiente.</b></div>
+</div>
+</div></section>
+<section class="qs" id="q"><div class="wrap">
+<nav class="segs" id="segs" style="--n:43" aria-label="Preguntas"></nav>
+<div class="qhead"><div class="qnum" id="qnum"></div><div class="save"><i></i><span>Se guarda solo en este dispositivo</span></div></div>
+<div id="view"></div>
+<footer class="foot"><span>Taltalab · José y Diego · Menos ruido. Más criterio.</span><span>Con tus respuestas montamos el centro de mandos y preparamos el workshop</span></footer>
+</div></section>
+<script src="../jszip.min.js" defer></script>
+<script>var CLIENT="Pauso",EMAIL="joe@taltalab.net,diego@taltalab.net",NAME="Peter",KEY="tl-pauso-peter",Q=[{"b": "Tu papel", "bn": 1, "t": "¿Qué haces en el estudio?", "q": "¿Qué haces en el estudio? Cuéntanos una semana normal, de lunes a viernes.", "h": "Lo que haces de verdad, no el cargo. Cuanto más concreto, mejor."}, {"b": "Tu papel", "bn": 1, "t": "¿En qué ramas y proyectos estás ahora mismo?", "q": "¿En qué ramas y proyectos estás ahora mismo?", "h": "Arquitectura, interiorismo, obra, renders, administración… y qué casas o clientes."}, {"b": "Tu papel", "bn": 1, "t": "¿Qué cosas solo sabes o solo haces tú, y se pararían si un…", "q": "¿Qué cosas solo sabes o solo haces tú, y se pararían si un día no estás?", "h": ""}, {"b": "Tu papel", "bn": 1, "t": "¿Qué decides tú solo y qué tienes que consultar?", "q": "¿Qué decides tú solo y qué tienes que consultar? ¿A quién y cómo se lo preguntas?", "h": ""}, {"b": "Tu papel", "bn": 1, "t": "¿Con quién trabajas más a diario y para qué?", "q": "¿Con quién trabajas más a diario y para qué?", "h": ""}, {"b": "Tu día a día", "bn": 2, "t": "¿Cómo empiezas el día?", "q": "¿Cómo empiezas el día? ¿Qué miras primero para saber qué te toca?", "h": ""}, {"b": "Tu día a día", "bn": 2, "t": "¿Dónde apuntas tus pendientes?", "q": "¿Dónde apuntas tus pendientes?", "h": "Libreta, notas del móvil, correo marcado, de memoria, WhatsApp a ti mismo…"}, {"b": "Tu día a día", "bn": 2, "t": "¿Qué te interrumpe más durante el día y quién?", "q": "¿Qué te interrumpe más durante el día y quién?", "h": ""}, {"b": "Tu día a día", "bn": 2, "t": "¿Qué se te suele olvidar o se te escapa, aunque sea de vez…", "q": "¿Qué se te suele olvidar o se te escapa, aunque sea de vez en cuando?", "h": ""}, {"b": "Tu día a día", "bn": 2, "t": "¿Cómo usas el calendario?", "q": "¿Cómo usas el calendario? ¿Lo compartes con alguien del estudio?", "h": ""}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "Cuando terminas algo, ¿a quién se lo pasas y por dónde?", "q": "Cuando terminas algo, ¿a quién se lo pasas y por dónde?", "h": "WhatsApp, correo, enlace de Dropbox, en persona, Miro, teléfono…"}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "Cuando necesitas algo de otra persona del estudio, ¿cómo se…", "q": "Cuando necesitas algo de otra persona del estudio, ¿cómo se lo pides y cuánto sueles esperar?", "h": ""}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "Más o menos, ¿qué parte de lo que habláis de trabajo va por…", "q": "Más o menos, ¿qué parte de lo que habláis de trabajo va por WhatsApp, correo, teléfono o en persona?", "h": ""}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "¿Cómo sabéis cuál es la versión buena de una ficha o de un…", "q": "¿Cómo sabéis cuál es la versión buena de una ficha o de un documento?", "h": "Dónde se guarda, cómo se nombra y quién lo decide."}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "Cuando alguien cambia algo en una ficha, ¿cómo te enteras…", "q": "Cuando alguien cambia algo en una ficha, ¿cómo te enteras hoy? ¿Te ha pasado enterarte tarde?", "h": ""}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "Al cerrar un cambio, ¿te iría bien dejar una nota de voz…", "q": "Al cerrar un cambio, ¿te iría bien dejar una nota de voz corta («he cambiado esto, esto y esto»)? ¿Qué te lo pondría fácil o qué te frenaría?", "h": ""}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "¿Te serviría separar «borradores» de «cambios definitivos»?", "q": "¿Te serviría separar «borradores» de «cambios definitivos»? ¿Cómo lo distinguís hoy?", "h": ""}, {"b": "Cómo circula el trabajo", "bn": 3, "t": "Cuéntanos la última vez que algo se perdió, se envió mal o…", "q": "Cuéntanos la última vez que algo se perdió, se envió mal o hubo que repetirlo. ¿Qué pasó?", "h": ""}, {"b": "Planos y fichas", "bn": 4, "t": "¿Quién te encarga los planos o cambios y cómo te llegan (de…", "q": "¿Quién te encarga los planos o cambios y cómo te llegan (de palabra, WhatsApp, correo, marcado en un PDF)?", "h": ""}, {"b": "Planos y fichas", "bn": 4, "t": "Cuando te piden un cambio, ¿cómo sabes sobre qué archivo…", "q": "Cuando te piden un cambio, ¿cómo sabes sobre qué archivo hacerlo?", "h": ""}, {"b": "Planos y fichas", "bn": 4, "t": "¿Cómo nombras y guardas las versiones?", "q": "¿Cómo nombras y guardas las versiones? ¿Qué haces con las antiguas?", "h": "En el Dropbox de Tonyina hay 66 modelos de TY10 y una carpeta OLD con 92."}, {"b": "Planos y fichas", "bn": 4, "t": "¿Te ha pasado trabajar sobre una versión que no era la…", "q": "¿Te ha pasado trabajar sobre una versión que no era la buena? ¿Qué pasó?", "h": ""}, {"b": "Planos y fichas", "bn": 4, "t": "¿Trabajáis a veces dos personas sobre la misma ficha?", "q": "¿Trabajáis a veces dos personas sobre la misma ficha? ¿Cómo lo resolvéis?", "h": ""}, {"b": "Planos y fichas", "bn": 4, "t": "Cuando terminas, ¿cómo avisas y a quién?", "q": "Cuando terminas, ¿cómo avisas y a quién?", "h": ""}, {"b": "Planos y fichas", "bn": 4, "t": "¿Qué versión de Archicad usas?", "q": "¿Qué versión de Archicad usas? ¿Te parecería bien probar la versión nueva?", "h": ""}, {"b": "Planos y fichas", "bn": 4, "t": "Del Dropbox de Tonyina:", "q": "Del Dropbox de Tonyina: ¿cuál es el modelo vigente de TY10, TY12 y TY14? ¿Qué son TYx3 y (PEDRO)? ¿Sabes qué pasó con la copia en conflicto del 23/09? Contesta solo lo que sepas.", "h": ""}, {"b": "Lo que más tiempo te quita", "bn": 5, "t": "¿Qué te hace perder más tiempo?", "q": "¿Qué te hace perder más tiempo? Pon un ejemplo de las últimas dos semanas.", "h": "Buscar archivos, esperar respuestas, repetir explicaciones, rehacer algo porque cambió…"}, {"b": "Lo que más tiempo te quita", "bn": 5, "t": "¿Qué tarea repetitiva te quitarías de encima mañana mismo?", "q": "¿Qué tarea repetitiva te quitarías de encima mañana mismo?", "h": ""}, {"b": "Lo que más tiempo te quita", "bn": 5, "t": "Si tuvieras un asistente que conoce todos los proyectos…", "q": "Si tuvieras un asistente que conoce todos los proyectos, ¿qué es lo primero que le pedirías cada mañana?", "h": ""}, {"b": "Lo que más tiempo te quita", "bn": 5, "t": "¿Qué funciona bien hoy y no hay que tocar?", "q": "¿Qué funciona bien hoy y no hay que tocar?", "h": ""}, {"b": "Coordinación", "bn": 6, "t": "¿Qué debería poder cerrar Fran sin preguntar a nadie, y qué…", "q": "¿Qué debería poder cerrar Fran sin preguntar a nadie, y qué tiene que pasar siempre por Nacho o María?", "h": ""}, {"b": "Coordinación", "bn": 6, "t": "¿Tendría sentido que el centro de mandos tenga una entrada…", "q": "¿Tendría sentido que el centro de mandos tenga una entrada por rama (arquitectura, interiorismo, obra)? ¿Quién llevaría cada una?", "h": ""}, {"b": "Coordinación", "bn": 6, "t": "¿Cómo quieres enterarte de lo que hacen los demás?", "q": "¿Cómo quieres enterarte de lo que hacen los demás?", "h": "Un aviso al momento solo si te afecta, un resumen al final del día, nada salvo que lo pidas…"}, {"b": "Herramientas", "bn": 7, "t": "¿Con qué trabajas:", "q": "¿Con qué trabajas: Mac, PC, móvil, tablet? ¿Cuál usas más?", "h": ""}, {"b": "Herramientas", "bn": 7, "t": "¿Qué usas para correo y calendario, en el ordenador y en el…", "q": "¿Qué usas para correo y calendario, en el ordenador y en el móvil? ¿Con qué cuenta?", "h": ""}, {"b": "Herramientas", "bn": 7, "t": "¿Cómo usas Dropbox?", "q": "¿Cómo usas Dropbox? ¿Trabajas sobre la carpeta sincronizada o descargas y vuelves a subir?", "h": ""}, {"b": "Herramientas", "bn": 7, "t": "¿Usas ya ChatGPT, Claude, Gemini u otra IA?", "q": "¿Usas ya ChatGPT, Claude, Gemini u otra IA? ¿Para qué y con qué cuenta, personal o del estudio?", "h": ""}, {"b": "Herramientas", "bn": 7, "t": "Del 1 al 5, ¿qué tal te llevas con la tecnología nueva?", "q": "Del 1 al 5, ¿qué tal te llevas con la tecnología nueva? ¿Qué te da más pereza o respeto?", "h": ""}, {"b": "Herramientas", "bn": 7, "t": "¿Qué no debería hacer nunca la IA en tu trabajo?", "q": "¿Qué no debería hacer nunca la IA en tu trabajo?", "h": "Enviar nada sin tu permiso, tocar fichas, ver ciertos datos de clientes…"}, {"b": "Workshop y cierre", "bn": 8, "t": "¿Qué días y franjas te vienen mejor para el workshop con…", "q": "¿Qué días y franjas te vienen mejor para el workshop con todo el equipo?", "h": ""}, {"b": "Workshop y cierre", "bn": 8, "t": "¿Qué te gustaría saber hacer al salir del workshop?", "q": "¿Qué te gustaría saber hacer al salir del workshop?", "h": ""}, {"b": "Workshop y cierre", "bn": 8, "t": "¿Algo importante que no te hayamos preguntado?", "q": "¿Algo importante que no te hayamos preguntado?", "h": ""}];</script>
+<script src="../app.js" defer></script>
+</body></html>

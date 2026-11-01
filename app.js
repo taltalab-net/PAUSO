@@ -8,6 +8,8 @@ try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.a){st=s;st.c=st.
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 var CAN_REC=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
 var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+/* en móviles el micro no se comparte bien: manda el audio y la transcripción la hacemos después */
+var MOVIL=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 /* audio en IndexedDB */
 var dbp=null;
 function db(){if(dbp)return dbp;dbp=new Promise(function(res,rej){try{var r=indexedDB.open('tl-cuestionarios',1);r.onupgradeneeded=function(){r.result.createObjectStore('clips')};r.onsuccess=function(){res(r.result)};r.onerror=function(){rej(r.error)}}catch(e){rej(e)}});return dbp}
@@ -36,7 +38,7 @@ function recTick(t0){if(!R)return;var el=(Date.now()-t0)/1000,t=mmss(el),m=R.m,n
  if(!m||m.err||m.n<5){say('● Grabando · '+t+' · pulsa Parar cuando acabes');return}
  var mudo=!m.last&&el>=WARN||(m.last&&now-m.live>WARN*1000);
  if(mudo){warn(NOHEAR);if(R.sr){var q=R.sr;R.sr=null;try{q.abort()}catch(e){}}say('● Grabando · '+t+' · no te oigo');return}
- warn(null);
+ warn(null);if(m.last&&R.srGo)R.srGo();
  if(!m.last)say('● Grabando · '+t+' · habla ahora');
  else say('● Grabando · '+t+' · '+(now-m.last>8000?'hace rato que no te oigo':'te oigo')+' · pulsa Parar cuando acabes')}
 /* volumen máximo de un audio ya grabado; null si el navegador no puede leerlo */
@@ -58,7 +60,7 @@ function start(i,ta){
   mr.ondataavailable=function(e){if(e.data&&e.data.size)chunks.push(e.data)};
   mr.onstop=function(){
    clearInterval(timer);stream.getTracks().forEach(function(t){t.stop()});
-   var dur=(Date.now()-t0)/1000,blob=new Blob(chunks,{type:mr.mimeType||mime||'audio/webm'}),cur=R;R=null;setUI(false);meterStop(M);warn(null);
+   var dur=(Date.now()-t0)/1000,blob=new Blob(chunks,{type:mr.mimeType||mime||'audio/webm'}),cur=R;R=null;setUI(false);meterStop(M);warn(null);try{cur.wl&&cur.wl.release()}catch(e){}
    if(!blob.size||dur<1){say('No se ha grabado nada. Pulsa otra vez.');return}
    say('Comprobando el audio…');
    blobPeak(blob).then(function(pk){
@@ -67,13 +69,13 @@ function start(i,ta){
     putClip(i,n,blob).then(function(){list.push({n:n,s:dur,t:blob.type});st.c[i]=list;save();drawSegs();if(st.i===i){say(pk!==null&&pk<LOW?'Guardado, pero se oye muy bajo. Escúchalo antes de seguir.':'Guardado. Ya no estás grabando. Puedes grabar otra vez para añadir más.');drawClips(i)}},function(){say('No he podido guardar el audio en este dispositivo. Escribe tu respuesta.')});
    });
   };
-  mr.start(1000);setUI(true);
+  mr.start(1000);setUI(true);try{navigator.wakeLock&&navigator.wakeLock.request('screen').then(function(l){if(R&&R.mr===mr)R.wl=l;else l.release()},function(){})}catch(e){}
   meterStart(M,stream);timer=setInterval(function(){recTick(t0)},250);
-  /* transcripción en directo, si el navegador la ofrece */
-  if(SR){try{var sr=new SR();sr.lang='es-ES';sr.continuous=true;sr.interimResults=true;var base=ta.value?ta.value.replace(/\s+$/,'')+' ':'',fin='';
+  /* transcripción en directo, solo en ordenador y cuando ya se ha oído sonido: el audio va primero */
+  R.srGo=function(){R.srGo=null;if(!SR||MOVIL)return;try{var sr=new SR();sr.lang='es-ES';sr.continuous=true;sr.interimResults=true;var base=ta.value?ta.value.replace(/\s+$/,'')+' ':'',fin='';
    sr.onresult=function(ev){var tmp='';for(var r=ev.resultIndex;r<ev.results.length;r++){var x=ev.results[r][0].transcript;if(ev.results[r].isFinal)fin+=x+' ';else tmp+=x}ta.value=base+fin+tmp;st.a[i]=ta.value;save()};
    sr.onerror=function(){};sr.onend=function(){if(R&&R.sr===sr){try{sr.start()}catch(e){}}};
-   R.sr=sr;sr.start()}catch(e){}}
+   R.sr=sr;sr.start()}catch(e){}};
  },function(err){
   meterStop(M);var n=err&&err.name;
   if(n==='NotAllowedError'||n==='SecurityError')say('El micrófono está bloqueado. Pulsa el icono a la izquierda de la dirección web, permite el micrófono y vuelve a pulsar.');
